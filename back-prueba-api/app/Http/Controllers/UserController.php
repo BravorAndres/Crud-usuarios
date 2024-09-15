@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use GuzzleHttp\Client;
 use App\Models\User;
 
@@ -11,12 +12,11 @@ use App\Models\User;
 class UserController extends Controller
 {
     
-    //creacion del client con inyeccion de dependiencias
+    //creacion del client guzzlehttp con inyeccion de dependiencias
     protected $client;
     public function __construct(Client $client){
         $this->client= $client;
     }
-    
 
     //obtener y guardar datos de la api
     public function fetchAndStoreData(){
@@ -43,7 +43,6 @@ class UserController extends Controller
             );
         }
     }
-
 
     //aplana json para que conincida con el formato de la base de datos
     private function aplanarDatos($data){
@@ -75,7 +74,53 @@ class UserController extends Controller
         $data['company'] = $companyPlain;
         $data['companybs'] = $companyBs;
 
-    return $data;
+        return $data;
     }
 
+    //Operaciones CRUD sobre la base de datos
+    
+    //Publucar los datos
+    public function index(){
+        return response()->json(User::all(),200);
+    }
+
+    //Publicar usuario por id
+    public function show($id){
+        $user = User::find($id);
+        if ($user){
+            return response()->json($user,200);
+        }else{
+            return response()->json(['message'=>'Usuario no encontrado'],400);
+        }
+    }
+
+    //crear usuario nuevo
+    public function store(StoreUserRequest $request){
+        $user = User::create($request->validated());
+        return response()->json($user, 201);
+    }
+
+    //actualizar usuario
+    public function update(UpdateUserRequest $request, $id){
+
+        $user = User::find($id);
+
+        if ($user) {
+            $user->update($request->validated());
+            return response()->json($user, 200);
+        } else {
+            return response()->json(['message' => 'Usuario no encontrado'], 404);
+        }
+    }
+
+    //elimiar usuario
+    public function destroy($id){
+        $user = User::find($id);
+        if($user){
+            $user->delete();
+            return response()->json(['message' => 'Usuario eliminado'], 200);
+        }else{
+            return response()->json(['message'=>'Usuaro no encontrado',404]);
+        }
+    }
 }
