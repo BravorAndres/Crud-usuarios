@@ -17,12 +17,23 @@ return new class extends Migration
             $table->string('username',50);
             $table->string('email',100)->unique();
             $table->string('address_city',50);
-            $table->string('phone',20);
+            $table->string('phone',50);
             $table->string('website',100);
             $table->string('company_name',100);
             $table->string('company_bs',100);
         });
+
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
+        });
     }
+
+    
 
     /**
      * Reverse the migrations.

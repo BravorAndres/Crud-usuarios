@@ -11,6 +11,10 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+
+    //modificacion para que le modelo se adapte a la base de datos establecida
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
