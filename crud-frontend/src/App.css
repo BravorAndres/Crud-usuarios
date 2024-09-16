@@ -1,73 +1,216 @@
-.App {
+/* Estilos generales que se aplican a todas las pantallas */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
   text-align: center;
+  color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.modal {
-  display: block;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
+table {
   width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  border-collapse: collapse;
 }
 
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 575.98px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+}
+
+/* Estilos para pantallas medianas (tabletas) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
+/* Estilos para pantallas grandes (portátiles y monitores) */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  table {
+    font-size: 1rem;
+  }
+
+  th, td {
+    padding: 12px;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+/* Estilos para pantallas extra grandes (monitores grandes) */
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  table {
+    font-size: 1.1rem;
+  }
+
+  th, td {
+    padding: 15px;
+  }
+
+  .btn {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+}
+
+
+/* estilos del modal
+
+/* Fondo semi-transparente detrás del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal contenedor */
+.modal-dialog {
+  width: 90%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Header del modal */
+.modal-header {
+  padding: 16px;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Título del modal */
+.modal-title {
+  margin: 0;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
+/* Botón de cierre */
+.close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
   cursor: pointer;
 }
+
+/* Cuerpo del modal */
+.modal-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Estilo de los inputs */
+.modal-body input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Botones de acciones */
+.modal-footer {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button.btn-primary {
+  background-color: #af72e0;
+  color: #fff;
+}
+
+button.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+
+
+/* css para alert js */
+
+.alert-box {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px;
+  background-color: #f44336; /* Color rojo para errores */
+  color: white;
+  border-radius: 5px;
+  z-index: 1000;
+  width: 300px;
+  text-align: center;
+}
+
