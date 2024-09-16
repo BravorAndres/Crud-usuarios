@@ -12,88 +12,88 @@ El modelo de usuario utilizado en este proyecto tiene la siguiente estructura:
   "name": "Leanne Graham",
   "username": "Bret",
   "email": "Sincere@april.biz",
-  "address_city": "Kulas Light - Apt. 556 - Gwenborough -",
+  "address_city": "Kulas Light - Apt. 556 - Gwenborough",
   "phone": "1-770-736-8031 x56442",
   "website": "hildegard.org",
   "company_name": "Romaguera-Crona",
   "company_bs": "harness real-time e-markets"
 }
-
-Se implementaron las migraciones en laravel para poder crear las tablas de la base de datos de manera sencilla.
-
-## flujo de los datos en la aplicación
-
-![flujo de datos](flujo de datos .drawio.png)
-<img src="flujo de datos .drawio.png" alt="flujo de datos" />
-
-
-
-
-##  Flujo de peticiones de la aplicacion
-
-![flujograma app](flujo de datos .drawio.png)
-<img src="flujograma app.drawio" alt="flujograma app" />
-
-
-
-# GUIA DE INSTALACION
-
-Requisitos:
-
-PHP >= 8.0
-Composer
-Node.js
-Laravel >= 9.x
-React >= 18.x
-MySQL o cualquier otra base de datos relacional compatible con Laravel
-
-en una consola de comandos cmd o bash ejecutar los siguientes comandos
-
-Clonar repositorio
-
-```
-    git clone https://github.com/usuario/prueba-crud-usuarios.git
-    cd prueba-crud-usuarios
 ```
 
-instalacion de dependencias en laravel
-```
-    cd back-prueba-api/
-    composer install
-```
+Se implementaron las migraciones en Laravel para poder crear las tablas de la base de datos de manera sencilla.
 
-instalar dependecias en react
+## Flujo de los Datos en la Aplicación
 
-desde la raiz del proyecto
-```
-     cd crud-frontend/
-     npm install
-```
+![flujo de datos](flujo_de_datos.drawio.png)
 
-en el directorio back-prueba-api/ modificar el archivo ``` .envExample```, cambiar el nombre a ``` .env``` y configurar el apartade de bases de datos del archivo, con el puerto, el nombre de la base de datos y la contraseña del motor de base de datos utilizada. 
+## Flujo de Peticiones de la Aplicación
 
-## ejecucion del proyecto
+![flujograma app](flujograma_app.drawio.png)
 
-Si aun no se han creado las bases de datos mediante el script sql ejecutar las migraciones de laravel.
+## Guía de Instalación
 
-en la raiz del proyecto.
-```
-    cd back-prueba-api/
-    php artisan migrate
-```
+### Requisitos
 
-Una vez la migracion esta lista se puede ejecutar el proyecto
+- PHP >= 8.0
+- Composer
+- Node.js
+- Laravel >= 9.x
+- React >= 18.x
+- MySQL o cualquier otra base de datos relacional compatible con Laravel
 
-```
-    php artisan serve
-```
+### Instalación
 
-Desde otra consola cmd o bash ejecutar el proyecto react
+1. **Clonar el Repositorio**
 
-en la raiz del proyecto
-```
-    cd back-prueba-api/
-    npm start
-```
+   Abre una consola de comandos (cmd o bash) y ejecuta:
+   ```bash
+   git clone https://github.com/usuario/prueba-crud-usuarios.git
+   cd prueba-crud-usuarios
+   ```
 
-El pryecto deberia estar en funcionamiento.
+2. **Instalación de Dependencias en Laravel**
+
+   Navega al directorio de Laravel y ejecuta:
+   ```bash
+   cd back-prueba-api/
+   composer install
+   ```
+
+3. **Instalación de Dependencias en React**
+
+   Desde la raíz del proyecto, navega al directorio de React y ejecuta:
+   ```bash
+   cd crud-frontend/
+   npm install
+   ```
+
+4. **Configurar el Archivo `.env` en Laravel**
+
+   En el directorio `back-prueba-api/`, modifica el archivo `.envExample`, cámbiale el nombre a `.env` y configura los parámetros de la base de datos, incluyendo el puerto, el nombre de la base de datos y la contraseña del motor de base de datos utilizado.
+
+## Ejecución del Proyecto
+
+1. **Migrar la Base de Datos**
+
+   Si aún no se han creado las bases de datos mediante el script SQL, ejecuta las migraciones de Laravel. Desde la raíz del proyecto:
+   ```bash
+   cd back-prueba-api/
+   php artisan migrate
+   ```
+
+2. **Ejecutar el Backend**
+
+   Una vez que la migración esté lista, ejecuta el backend con:
+   ```bash
+   php artisan serve
+   ```
+
+3. **Ejecutar el Frontend**
+
+   Abre otra consola (cmd o bash) y navega al directorio del frontend:
+   ```bash
+   cd crud-frontend/
+   npm start
+   ```
+
+El proyecto debería estar en funcionamiento.
