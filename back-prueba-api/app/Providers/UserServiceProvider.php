@@ -22,8 +22,10 @@ class UserServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //llamado a la fucion para guardar los datos con cada inicio de la aplicacion
-        $userController = app(UserController::class);
-        $userController->fetchAndStoreData();
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                \App\Console\Commands\FetchAndStoreUserData::class,
+            ]);
+        }
     }
 }
